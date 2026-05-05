@@ -114,11 +114,13 @@ using (var scope = app.Services.CreateScope())
     await SeedData.SeedAsync(db);
 }
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// Swagger always-on — used both for local dev AND as the Render health-check
+// endpoint (/swagger/v1/swagger.json). Also useful for testing the live API.
+app.UseSwagger();
+app.UseSwaggerUI();
+
+// Lightweight health endpoint as a backup for any future health-check change.
+app.MapGet("/health", () => Results.Ok(new { status = "ok", time = DateTime.UtcNow }));
 
 app.UseCors("AllowAll");
 app.UseAuthentication();
