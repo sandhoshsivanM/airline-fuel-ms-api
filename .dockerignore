@@ -1,0 +1,25 @@
+# Build output (we rebuild inside the container)
+**/bin/
+**/obj/
+**/*.user
+
+# Local DB & logs
+**/*.db
+**/*.db-journal
+*.log
+
+# Frontend (separate project; not part of this image)
+AirlineFuelMS.Web/
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+
+# Git
+.git/
+.gitignore
+
+# Docs
+README.md
+*.md

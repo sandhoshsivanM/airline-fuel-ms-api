@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="AirlineFuelMS.API/AirlineFuelMS.API.csproj" />
+  <Project Path="AirlineFuelMS.Core/AirlineFuelMS.Core.csproj" />
+  <Project Path="AirlineFuelMS.Infrastructure/AirlineFuelMS.Infrastructure.csproj" />
+</Solution>

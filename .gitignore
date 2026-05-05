@@ -1,0 +1,44 @@
+# =====================================
+# Backend-only repository
+# (the AirlineFuelMS.Web Angular project is a separate concern and excluded)
+# =====================================
+
+# .NET build output
+**/bin/
+**/obj/
+**/*.user
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
+**/.vs/
+
+# SQLite local DB files (regenerated on app start via SeedData)
+**/*.db
+**/*.db-journal
+**/*.sqlite
+**/*.sqlite-journal
+
+# Logs and temp
+*.log
+*.tlog
+*.binlog
+
+# Test results
+TestResults/
+
+# Rider / VS / VS Code per-user state
+.idea/
+.vscode/
+*.swp
+*~
+
+# OS noise
+.DS_Store
+Thumbs.db
+
+# ---- Excluded — Angular frontend lives in its own project lifecycle ----
+AirlineFuelMS.Web/
+
+# Local environment overrides
+appsettings.Local.json
+appsettings.Development.json

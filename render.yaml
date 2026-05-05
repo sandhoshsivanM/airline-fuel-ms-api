@@ -1,0 +1,33 @@
+# Render Blueprint — describes the web service + Postgres DB.
+# Use the "New Blueprint" button on Render and point it at this repo.
+# Docs: https://render.com/docs/blueprint-spec
+
+databases:
+  - name: airlinefuel-db
+    databaseName: airlinefuel
+    user: airlinefuel
+    plan: free            # Note: Render free Postgres expires after 30 days, then $7/mo
+
+services:
+  - type: web
+    name: airlinefuel-api
+    runtime: docker
+    plan: free            # Web service spins down after 15 min idle on free plan
+    region: oregon        # change if you prefer a closer region
+    dockerfilePath: ./Dockerfile
+    autoDeploy: true
+    healthCheckPath: /swagger/v1/swagger.json
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: airlinefuel-db
+          property: connectionString    # postgres://user:pass@host/db
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      # Override these in the Render dashboard (don't commit production secrets)
+      - key: Jwt__Key
+        generateValue: true              # Render generates a random 32+ char value
+      - key: Jwt__Issuer
+        value: AirlineFuelMS
+      - key: Jwt__Audience
+        value: AirlineFuelMS_Client
