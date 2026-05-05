@@ -47,6 +47,7 @@ builder.Services.AddScoped<IAirlineService, AirlineService>();
 builder.Services.AddScoped<IFuelProviderService, FuelProviderService>();
 builder.Services.AddScoped<IFuelTransactionService, FuelTransactionService>();
 builder.Services.AddScoped<IInvoiceService, InvoiceService>();
+builder.Services.AddScoped<ISqlConsoleService, SqlConsoleService>();
 
 // — JWT Authentication
 var jwtKey = builder.Configuration["Jwt:Key"]!;
